@@ -21,7 +21,7 @@
           <v-text-field name="subject" v-model="title" label="标题"></v-text-field>
           <v-textarea label="内容" name="body" v-model="content" counter="500"></v-textarea>
         </div>
-        <v-btn v-if="linkReady" download="message.eml" ref="link"  block color="primary" large elevation="0" class="mt-4">下载并发送</v-btn>
+        <v-btn v-if="linkReady" ref="link"  block color="primary" large elevation="0" class="mt-4">下载并发送</v-btn>
         <v-btn v-else @click="sendMail" block dark large elevation="0" class="mt-4">
           生成
           <v-icon right>mdi-send</v-icon>
@@ -46,14 +46,6 @@ async function uploadImg (file) {
 }
 
 
-const makeTextFile = function (text) {
-  const data = new Blob([text], {type: 'text/plain'})
-  let textFile = null
-  textFile = window.URL.createObjectURL(data)
-  return textFile
-}
-
-
 export default {
   data: () => ({
     file: null,
@@ -66,28 +58,9 @@ export default {
     sendMail () {
       this.linkReady = true
       this.$nextTick(() => {
-        const text = (`
-To: User <juhaodong@gmail.com>
-Subject: Subject
-X-Unsent: 1
-Content-Type: text/html
-
-<html>
-<head>
-<style>
-    body, html, table {
-        font-family: Calibri, Arial, sans-serif;
-    }
-</style>
-</head>
-<body>
-<h1>${this.title}</h1>
-${this.content}<br>
-<img width="200" height="200" src='${this.imgUrl}' alt="img"/>
-</body>
-</html>
+        window.open(`mailto:juhaodong@gmail.com?subject=${this.title}&body=${this.content}&
+<a href="${this.imgUrl}">show picture</a>
 `)
-        this.$refs.link.href = makeTextFile(text)
       })
 
     }
