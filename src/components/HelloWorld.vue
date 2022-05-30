@@ -57,7 +57,7 @@ export default {
   methods: {
     sendMail () {
       this.$nextTick(() => {
-        window.open(`mailto:Haodong JU<juhaodong@gmail.com>?subject=${this.title}&body=${this.content}
+        window.open(`mailto:Haodong JU<juhaodong@gmail.com>?subject=${this.title}&body=${this.content}\n
 <a href="${this.imgUrl}">show picture</a>
 `)
       })
