@@ -18,8 +18,8 @@
                 accept="image/*"
                 label="上传图片"
             />
-            <v-text-field name="title" v-model="title" label="标题"></v-text-field>
-            <v-textarea label="内容" name="content" v-model="content" counter="500"></v-textarea>
+            <v-text-field name="subject" v-model="title" label="标题"></v-text-field>
+            <v-textarea label="内容" name="body" v-model="content" counter="500"></v-textarea>
           </div>
           <v-btn name="submit" block dark large elevation="0" class="mt-4" type="submit">发送
             <v-icon right>mdi-send</v-icon>
@@ -33,12 +33,7 @@
 </template>
 
 <script>
-const toBase64 = file => new Promise((resolve, reject) => {
-  const reader = new FileReader()
-  reader.readAsDataURL(file)
-  reader.onload = () => resolve(reader.result)
-  reader.onerror = error => reject(error)
-})
+
 
 export default {
   data: () => ({
