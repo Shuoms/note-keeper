@@ -37,13 +37,7 @@
 
 <script>
 
-import { hillo } from 'hillo'
 
-const baseUrl = "https://aaden.online/email/"
-
-async function uploadImg (file) {
-  return await hillo.postWithUploadFile(baseUrl + "demo.php", {file})
-}
 
 
 export default {
@@ -58,17 +52,16 @@ export default {
     sendMail () {
       this.$nextTick(() => {
         window.open(`mailto:Haodong JU<juhaodong@gmail.com>?subject=${this.title}&body=${this.content}\n
-<a href="${this.imgUrl}">show picture</a>
 `)
       })
 
     }
   },
   watch: {
-    async file (val) {
-      const currentUrl = baseUrl + (await uploadImg(val))
-      console.log(currentUrl)
-      this.imgUrl = currentUrl
+    async file () {
+      // const currentUrl = baseUrl + (await uploadImg(val))
+      // console.log(currentUrl)
+      // this.imgUrl = currentUrl
     }
   },
   computed: {
