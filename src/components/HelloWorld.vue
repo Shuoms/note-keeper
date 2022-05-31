@@ -4,7 +4,7 @@
       <v-col cols="12">
 
         <div class="pa-4" style="min-height: calc(100vh - 172px)">
-          <h2>新建笔记</h2>
+          <h2>Steckbrief</h2>
           <v-card elevation="0" color="#f6f6f6" class="mt-4">
             <v-img width="100%"
                    height="196px"
@@ -16,10 +16,10 @@
               v-model="file"
               prepend-icon="mdi-image"
               accept="image/*"
-              label="上传图片"
+              label="Foto hochladen"
           />
-          <v-text-field name="subject" v-model="title" label="标题"></v-text-field>
-          <v-textarea label="内容" name="body" v-model="content" counter="500"></v-textarea>
+          <v-text-field name="subject" v-model="title" label="Ideentitel"></v-text-field>
+          <v-textarea label="Ideenbeschreibung" name="body" v-model="content" counter="500"></v-textarea>
         </div>
         <v-btn v-if="linkReady" ref="link" block color="primary" large elevation="0" class="mt-4">下载并发送</v-btn>
         <v-btn v-else @click="sendMail" block dark large elevation="0" class="mt-4">
